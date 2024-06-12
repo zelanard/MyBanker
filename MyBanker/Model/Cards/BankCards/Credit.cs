@@ -9,6 +9,8 @@ namespace MyBanker.Model.Cards.BankCards
     /// </summary>
     public abstract class Credit : BankCard
     {
+        private Sint minBalance;
+
         /// <summary>
         /// Lent cannot be lower than minimum balance.
         /// todo: rename to MaxLoan.
@@ -30,8 +32,8 @@ namespace MyBanker.Model.Cards.BankCards
         /// <summary>
         /// Loan money from the bank.
         /// </summary>
-        /// <param name="amount"></param>
-        /// <param name="account"></param>
+        /// <param name="amount">The negative value to be added to the lent value</param>
+        /// <param name="account">The account to which the card belongs</param>
         /// <returns>true if the loan was successfull, else false</returns>
         public virtual bool Loan(Sint amount, Account account)
         {
@@ -56,7 +58,7 @@ namespace MyBanker.Model.Cards.BankCards
         /// <summary>
         /// Make up the Saldo
         /// </summary>
-        /// <param name="account"></param>
+        /// <param name="account">The account to which the card belongs</param>
         /// <returns>true if the saldo was made up succesfully, else false</returns>
         public bool Saldo(Account account)
         {
